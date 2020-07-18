@@ -1,8 +1,10 @@
 #include<iostream>
+#include <fstream>
 using namespace std;
 
 void home();
 void adminLogin();
+void adminPage();
 
 int main(){
 
@@ -29,11 +31,17 @@ void home(){
     }
     else{
         cout<<" wrong option choose 1 or 2 \n";
+        home();
     }
 }
 
 void adminLogin(){
-    string username ,password;
+    string username ,password,name,login;
+    // to read from files
+    ifstream credentials;
+    // look if path is correct
+    credentials.open("admin.txt");
+    
     cout<<" welcome to registration and deposit page \n";
     cout<<" enter administrator  username and password \n";
     cout<<" enter username : ";
@@ -41,13 +49,16 @@ void adminLogin(){
     cout<<" enter password : ";
     cin>>password;
 
-    if(username=="admin"&&password=="admin123"){
-        // admin page
-        cout<<"admin page";
+//    workiing login 
+    getline(credentials,name);
+    getline(credentials,login);
+    if( username == name && password==login){
+        cout<<"yess \n";
     }
     else{
-        cout<<"wrong username or password \n \n";
-        home();
+        cout<<"nooo \n";
     }
+
+    credentials.close();
 }
 
