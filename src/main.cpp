@@ -8,6 +8,7 @@ void adminLogin();
 void adminPage();
 void adminReset();
 void registerClient();
+void userLogin();
 
 
 int main(){
@@ -27,8 +28,7 @@ void home(){
     cin >> choice;
 
     if (choice==1){
-        // normal user login
-        cout<<"user login \n";
+        userLogin();
     }
     else if(choice==2){
         adminLogin();
@@ -151,16 +151,43 @@ void adminReset(){
      cout<<"enter amount registered";
      cin>>clientcash;
 
-    user<<"******* \n";
+    
     user<<clientname<<"\n";
     user<<clientpassword<<"\n";
     user<<clientcash<<"\n";
-    user<<"******* \n";
+    
     cin.clear();
     cout<<"succesfully added a user \n\n\n";
     user.close();
     adminPage(); 
 
+ }
+
+ string clientname,clientpassword,filename,filepassword;
+ void userLogin(){
+    ifstream credential;
+    // look if path is correct
+    credential.open("usersDB.txt");
+    
+    cout<<" welcome to client login page \n";
+    cout<<" enter username : ";
+    cin>>clientname;
+    cout<<" enter password : ";
+    cin>>clientpassword;
+
+//    workiing login 
+    getline(credential,filename);
+    getline(credential,filepassword);
+    cout<<filename;
+    if( clientname==filename && clientpassword==filepassword){
+        cout<<"yessir \n";
+        
+    }
+    else{
+        cout<<"nooo \n";
+    }
+
+    credential.close();
  }
 
 
