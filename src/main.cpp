@@ -7,6 +7,7 @@ void home();
 void adminLogin();
 void adminPage();
 void adminReset();
+void registerClient();
 
 
 int main(){
@@ -84,7 +85,7 @@ void adminPage(){
     }
     else if(choice==2){
         cout<<"register client function \n";
-        adminPage();
+        registerClient();
     }
     else if(choice==3){
         adminReset();
@@ -139,7 +140,28 @@ void adminReset(){
         }  
     }
 }
+ void registerClient(){
+     ofstream user("usersDB.txt");
+     string clientname,clientpassword;
+     int clientcash;
+     cout<<"enter clients name";
+     cin>>clientname;
+     cout<<"enter client password";
+     cin>>clientpassword;
+     cout<<"enter amount registered";
+     cin>>clientcash;
 
+    user<<"******* \n";
+    user<<clientname<<"\n";
+    user<<clientpassword<<"\n";
+    user<<clientcash<<"\n";
+    user<<"******* \n";
+    cin.clear();
+    cout<<"succesfully added a user \n\n\n";
+    user.close();
+    adminPage(); 
+
+ }
 
 
 
