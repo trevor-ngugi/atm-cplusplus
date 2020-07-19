@@ -10,6 +10,7 @@ void adminReset();
 void registerClient();
 void userLogin();
 void homePage();
+void userReset();
 
 
 int main(){
@@ -207,13 +208,35 @@ void adminReset(){
          cout<<" you want to check balance \n";
      }
      else if(choice==3){
-         cout<<" you want to reset password \n";
+         userReset();
      }
      else{
          cout<<"wrong option choose again \n";
          homePage();
      }
 
+ }
+
+ void userReset(){
+     // outputs code in another file not want i wanted
+    ofstream outfile("userReset.txt");
+    ifstream readfile("usersDB.txt");
+    string oldpassword,newpassword,filepassword;
+
+    cout<<"enter old password";
+    cin>>oldpassword;
+
+    while(getline(readfile,filepassword)){
+        if(filepassword==oldpassword){
+            cout<<"enter new password \n";
+            cin>>newpassword;
+            outfile<< "\n"<<newpassword<<"\n";
+            cout<<"succesfully changed password \n";
+        }
+        else{
+            outfile<<filepassword;
+        }  
+    }
  }
 
 
