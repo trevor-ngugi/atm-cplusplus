@@ -171,8 +171,9 @@ void adminReset(){
     ifstream credential;
     // look if path is correct
     credential.open("usersDB.txt");
-    
-    cout<<" welcome to client login page \n";
+    cout<<"\n";
+    cout<<"------------------------------------- \n";
+    cout<<" Welcome to client login page : \n\n";
     cout<<" enter username : ";
     cin>>clientname;
     cout<<" enter password : ";
@@ -194,11 +195,13 @@ void adminReset(){
 
  void homePage(){
      int choice;
-     cout<<"welcome "<<clientname<< "\n";
-     cout<<" 1. withdraw cash \n";
-     cout<<" 2.check balamce \n";
-     cout<<" 3.reset password \n";
-     cout<<" enter option to continue \n";
+     cout<<"\n";
+     cout<<"------------------------------------- \n";
+     cout<<" Welcome "<<clientname<< "\n";
+     cout<<" 1. Withdraw cash \n";
+     cout<<" 2. Check balance \n";
+     cout<<" 3. Reset password \n \n";
+     cout<<" enter option to continue : ";
      cin>>choice;
 
      if(choice==1){
@@ -224,20 +227,29 @@ void adminReset(){
     ifstream readfile("usersDB.txt");
     string oldpassword,newpassword,filepassword;
 
-    cout<<"enter old password";
+    cout<<"\n";
+    cout<<" enter old password : ";
     cin>>oldpassword;
 
     while(getline(readfile,filepassword)){
         if(filepassword==oldpassword){
-            cout<<"enter new password \n";
+            cout<<" enter new password : ";
             cin>>newpassword;
             outfile<< "\n"<<newpassword<<"\n";
-            cout<<"succesfully changed password \n";
+            cout<<" succesfully changed password \n \n\n\n";
         }
         else{
+            // validation imekataa
             outfile<<filepassword;
+            // cout<<"wrong pasword \n";
+            // homePage();
+            // outfile.close();
+            // readfile.close();
         }  
     }
+    outfile.close();
+    readfile.close();
+    homePage();
  }
 
  void userBalance(){
@@ -247,13 +259,12 @@ void adminReset(){
     // look if path is correct
     credential.open("usersDB.txt");
     
-    
-
 //    workiing login 
     getline(credential,name);
     getline(credential,secret);
     getline(credential,cash);
-    cout<<cash<<"\n";
+    cout<<" your amount in the account : "<<cash<<"\n";
+    homePage();
 
     credential.close();
 
