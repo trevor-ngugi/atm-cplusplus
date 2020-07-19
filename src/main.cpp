@@ -11,6 +11,7 @@ void registerClient();
 void userLogin();
 void homePage();
 void userReset();
+void userBalance();
 
 
 int main(){
@@ -205,7 +206,7 @@ void adminReset(){
 
      }
      else if(choice==2){
-         cout<<" you want to check balance \n";
+         userBalance();
      }
      else if(choice==3){
          userReset();
@@ -237,6 +238,25 @@ void adminReset(){
             outfile<<filepassword;
         }  
     }
+ }
+
+ void userBalance(){
+    string name,secret;
+    string cash;
+    ifstream credential;
+    // look if path is correct
+    credential.open("usersDB.txt");
+    
+    
+
+//    workiing login 
+    getline(credential,name);
+    getline(credential,secret);
+    getline(credential,cash);
+    cout<<cash<<"\n";
+
+    credential.close();
+
  }
 
 
