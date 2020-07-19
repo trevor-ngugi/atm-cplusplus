@@ -9,6 +9,7 @@ void adminPage();
 void adminReset();
 void registerClient();
 void userLogin();
+void homePage();
 
 
 int main(){
@@ -178,9 +179,8 @@ void adminReset(){
 //    workiing login 
     getline(credential,filename);
     getline(credential,filepassword);
-    cout<<filename;
     if( clientname==filename && clientpassword==filepassword){
-        cout<<"yessir \n";
+        homePage();
         
     }
     else{
@@ -188,6 +188,32 @@ void adminReset(){
     }
 
     credential.close();
+ }
+
+ void homePage(){
+     int choice;
+     cout<<"welcome "<<clientname<< "\n";
+     cout<<" 1. withdraw cash \n";
+     cout<<" 2.check balamce \n";
+     cout<<" 3.reset password \n";
+     cout<<" enter option to continue \n";
+     cin>>choice;
+
+     if(choice==1){
+         cout<<"you have chosen to withdraw cash \n";
+
+     }
+     else if(choice==2){
+         cout<<" you want to check balance \n";
+     }
+     else if(choice==3){
+         cout<<" you want to reset password \n";
+     }
+     else{
+         cout<<"wrong option choose again \n";
+         homePage();
+     }
+
  }
 
 
