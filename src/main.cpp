@@ -25,9 +25,9 @@ void home(){
     int choice;
 
     cout<<"**** WELCOME TO BBIT2020 E-CASH SERVICES ****\n";
-    cout<<" 1. normal user login \n";
-    cout<<" 2. administrator login \n \n";
-    cout<<" choose an option to proceed : "; 
+    cout<<" 1. Normal user login \n";
+    cout<<" 2. Administrator login \n \n";
+    cout<<" Choose an option to proceed : "; 
     cin >> choice;
 
     if (choice==1){
@@ -49,12 +49,13 @@ void adminLogin(){
     ifstream credentials;
     // look if path is correct
     credentials.open("admin.txt");
-    
-    cout<<" welcome to registration and deposit page \n";
-    cout<<" enter administrator  username and password \n";
-    cout<<" enter username : ";
+    cout<<"\n";
+    cout<<"-------------------------------------------------- \n";
+    cout<<" Welcome to Registration and Deposit page \n";
+    cout<<" Enter administrator  username and password. \n";
+    cout<<" Enter username : ";
     cin>>username;
-    cout<<" enter password : ";
+    cout<<" Enter password : ";
     cin>>password;
 
 //    workiing login 
@@ -65,7 +66,8 @@ void adminLogin(){
         
     }
     else{
-        cout<<"nooo \n";
+        cout<<" Wrong username or password \n";
+        adminLogin();
     }
 
     credentials.close();
@@ -73,11 +75,13 @@ void adminLogin(){
 
 void adminPage(){
     int choice;
+    cout<<"\n";
+    cout<<"-------------------------------------------------- \n";
     cout<<" Welcome "<<adminName<<"\n";
-    cout<<" 1. deposit money for client \n ";
-    cout<<" 2. register new client \n";
-    cout<<" 3. reset password \n\n";
-    cout<<" enter option to proceed \n";
+    cout<<" 1. Deposit money for client \n ";
+    cout<<"2. Register new client \n";
+    cout<<" 3. Reset password \n\n";
+    cout<<" Enter option to proceed :";
 
     cin>>choice;
     if(choice==1){
@@ -87,14 +91,13 @@ void adminPage(){
 
     }
     else if(choice==2){
-        cout<<"register client function \n";
         registerClient();
     }
     else if(choice==3){
         adminReset();
     }
     else{
-        cout<<"wrong choice \n";
+        cout<<" Wrong input please try again \n";
         adminPage();
     }
     
@@ -124,35 +127,38 @@ void adminReset(){
     ifstream readfile("admin.txt");
     string oldpassword,newpassword,filepassword;
 
-    cout<<"enter old password";
+    cout<<" Enter old password : ";
     cin>>oldpassword;
 
     while(getline(readfile,filepassword)){
         if(filepassword==oldpassword){
-            //outfile<<filepassword<<"\n";
-            
-
-            cout<<"enter new password \n";
+            cout<<" Enter new password : ";
             cin>>newpassword;
             outfile<< "\n"<<newpassword;
-            cout<<"succesfully changed password \n";
-            //adminPage();
+            cout<<" succesfully changed password \n";
         }
         else{
             outfile<<filepassword;
         }  
     }
+    outfile.close();
+    readfile.close();
+    adminPage();
 }
+
  void registerClient(){
      ofstream user("usersDB.txt");
      string clientname,clientpassword;
      int clientcash;
-     cout<<"enter clients name";
-     cin>>clientname;
-     cout<<"enter client password";
-     cin>>clientpassword;
-     cout<<"enter amount registered";
-     cin>>clientcash;
+
+    cout<<"\n";
+    cout<<"-------------------------------------------------- \n";
+    cout<<" Enter clients name : ";
+    cin>>clientname;
+    cout<<" Enter client password : ";
+    cin>>clientpassword;
+    cout<<" Enter amount registered : ";
+    cin>>clientcash;
 
     
     user<<clientname<<"\n";
@@ -160,7 +166,7 @@ void adminReset(){
     user<<clientcash<<"\n";
     
     cin.clear();
-    cout<<"succesfully added a user \n\n\n";
+    cout<<" Succesfully added a user !!! \n\n\n";
     user.close();
     adminPage(); 
 
