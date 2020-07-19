@@ -80,7 +80,8 @@ void adminPage(){
     cout<<" Welcome "<<adminName<<"\n";
     cout<<" 1. Deposit money for client \n ";
     cout<<"2. Register new client \n";
-    cout<<" 3. Reset password \n\n";
+    cout<<" 3. Reset password \n";
+    cout<<" 4. Logout \n\n";
     cout<<" Enter option to proceed :";
 
     cin>>choice;
@@ -95,6 +96,9 @@ void adminPage(){
     }
     else if(choice==3){
         adminReset();
+    }
+    else if(choice==4){
+        home();
     }
     else{
         cout<<" Wrong input please try again \n";
@@ -193,7 +197,8 @@ void adminReset(){
         
     }
     else{
-        cout<<"nooo \n";
+        cout<<" Wrong username or password input please try again \n";
+        userLogin();
     }
 
     credential.close();
@@ -206,7 +211,8 @@ void adminReset(){
      cout<<" Welcome "<<clientname<< "\n";
      cout<<" 1. Withdraw cash \n";
      cout<<" 2. Check balance \n";
-     cout<<" 3. Reset password \n \n";
+     cout<<" 3. Reset password \n ";
+     cout<<"4. Logout \n\n";
      cout<<" enter option to continue : ";
      cin>>choice;
 
@@ -219,6 +225,9 @@ void adminReset(){
      }
      else if(choice==3){
          userReset();
+     }
+     else if(choice==4){
+         home();
      }
      else{
          cout<<"wrong option choose again \n";
